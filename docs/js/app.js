@@ -79,11 +79,12 @@ document.addEventListener("DOMContentLoaded", function () {
     popupDate.textContent = `日付: ${dateText}`;
     popupTime.textContent = `時間: ${timeText}`;
     openPopup();
+  }
 
   popupClose.addEventListener("click", () => closePopup());
   popupCancel.addEventListener("click", () => closePopup());
   popupOk.addEventListener("click", () => closePopup());
-  popupOverlay.addEventListener("click", () => closePopup(false));
+  popupOverlay.addEventListener("click", () => closePopup());
 
   fetch("data/events.json")
     .then(response => response.json())
