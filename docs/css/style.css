@@ -16,3 +16,32 @@ h1 {
   padding: 10px;
   border-radius: 8px;
 }
+
+/* ６行分の縦幅を確保し、予定が多いときは縦幅を伸ばして表示 */
+#calendar .fc-daygrid-day-frame {
+  min-height: calc(6 * 1.85rem + 1.5rem);
+}
+
+#calendar .fc-daygrid-day-events {
+  min-height: calc(6 * 1.85rem);
+  overflow: visible;
+}
+
+/* カテゴリ別の色分け */
+#calendar .fc-event.category-karate {
+  background-color: #cbe6ff !important;
+  border-color: #7daae8 !important;
+  color: #103f6e !important;
+}
+
+#calendar .fc-event.category-neis {
+  background-color: #e9f8d6 !important;
+  border-color: #8ebf4c !important;
+  color: #2f4f1d !important;
+}
+
+#calendar .fc-event.category-dance {
+  background-color: #ffe1dc !important;
+  border-color: #e98e7a !important;
+  color: #5b2c20 !important;
+}

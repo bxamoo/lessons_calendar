@@ -5,16 +5,29 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(response => response.json())
     .then(events => {
       const calendarEvents = events.map(event => {
+        const category = event.title.includes("空手")
+          ? "karate"
+          : event.title.includes("NEiS")
+          ? "neis"
+          : event.title.includes("ダンス")
+          ? "dance"
+          : "other";
+
+        const baseEvent = {
+          title: event.title,
+          classNames: [`category-${category}`]
+        };
+
         if (event.start && event.end) {
           return {
-            title: event.title,
+            ...baseEvent,
             start: `${event.date}T${event.start}`,
             end: `${event.date}T${event.end}`
           };
         }
 
         return {
-          title: event.title,
+          ...baseEvent,
           start: event.date,
           allDay: true
         };
@@ -24,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         initialView: "dayGridMonth",
         locale: "ja",
         firstDay: 0,
+        dayMaxEventRows: false,
         events: calendarEvents
       });
 
