@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const popupTitle = document.getElementById("popupTitle");
   const popupDate = document.getElementById("popupDate");
   const popupTime = document.getElementById("popupTime");
-  const popupDetails = document.getElementById("popupDetails");
+  const popupNote = document.getElementById("popupNote");
   const popupClose = document.querySelector(".popup-close");
   const popupOverlay = document.querySelector(".popup-overlay");
 
@@ -61,8 +61,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function closePopup() {
+    if (popup.dataset.eventId) {
+      saveNote(popup.dataset.eventId, popupNote.value);
+    }
     popup.classList.add("hidden");
     popup.setAttribute("aria-hidden", "true");
+  }
+
+  function getStorageKey(eventId) {
+    return `lessons-calendar-note:${eventId}`;
+  }
+
+  function loadNote(eventId) {
+    return localStorage.getItem(getStorageKey(eventId)) || "";
+  }
+
+  function saveNote(eventId, note) {
+    localStorage.setItem(getStorageKey(eventId), note);
   }
 
   function showEventPopup(info) {
@@ -71,20 +86,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const startText = original.start ? normalizeTime(original.start) : formatTime(info.event.start);
     const endText = original.end ? normalizeTime(original.end) : formatTime(info.event.end);
     const timeText = info.event.allDay ? "終日" : `${startText} - ${endText}`;
+    const eventId = info.event.id || `${original.title}|${original.date}|${original.start || ""}|${original.end || ""}`;
 
     popupTitle.textContent = info.event.title;
     popupDate.textContent = `日付: ${dateText}`;
     popupTime.textContent = `時間: ${timeText}`;
-    popupDetails.innerHTML = `
-      <dl>
-        <dt>タイトル</dt>
-        <dd>${original.title || ""}</dd>
-        <dt>日付</dt>
-        <dd>${dateText}</dd>
-        <dt>時間</dt>
-        <dd>${timeText}</dd>
-      </dl>
-    `;
+    popupNote.value = loadNote(eventId);
+    popup.dataset.eventId = eventId;
     openPopup();
   }
 
@@ -103,7 +111,9 @@ document.addEventListener("DOMContentLoaded", function () {
           ? "dance"
           : "other";
 
+        const eventId = `${event.title}|${event.date}|${event.start || ""}|${event.end || ""}`;
         const baseEvent = {
+          id: eventId,
           title: event.title,
           classNames: [`category-${category}`],
           extendedProps: {
