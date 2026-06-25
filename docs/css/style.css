@@ -91,6 +91,11 @@ h1 {
   padding: 1rem 1.25rem !important;
 }
 
+#calendar .fc-toolbar-title {
+  font-size: 1.45rem !important;
+  line-height: 1.2;
+}
+
 #calendar .fc-toolbar .fc-button-primary {
   min-height: 54px !important;
 }
