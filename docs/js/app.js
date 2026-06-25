@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const popupNote = document.getElementById("popupNote");
   const popupClose = document.querySelector(".popup-close");
   const popupOverlay = document.querySelector(".popup-overlay");
+  const popupOk = document.querySelector(".popup-ok");
+  const popupCancel = document.querySelector(".popup-cancel");
+  let currentEventId = "";
 
   function normalizeTime(timeString) {
     if (!timeString) return undefined;
@@ -60,9 +63,9 @@ document.addEventListener("DOMContentLoaded", function () {
     popup.setAttribute("aria-hidden", "false");
   }
 
-  function closePopup() {
-    if (popup.dataset.eventId) {
-      saveNote(popup.dataset.eventId, popupNote.value);
+  function closePopup(save = false) {
+    if (save && currentEventId) {
+      saveNote(currentEventId, popupNote.value);
     }
     popup.classList.add("hidden");
     popup.setAttribute("aria-hidden", "true");
@@ -86,18 +89,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const startText = original.start ? normalizeTime(original.start) : formatTime(info.event.start);
     const endText = original.end ? normalizeTime(original.end) : formatTime(info.event.end);
     const timeText = info.event.allDay ? "終日" : `${startText} - ${endText}`;
-    const eventId = info.event.id || `${original.title}|${original.date}|${original.start || ""}|${original.end || ""}`;
+    currentEventId = info.event.id || `${original.title}|${original.date}|${original.start || ""}|${original.end || ""}`;
 
     popupTitle.textContent = info.event.title;
     popupDate.textContent = `日付: ${dateText}`;
     popupTime.textContent = `時間: ${timeText}`;
-    popupNote.value = loadNote(eventId);
-    popup.dataset.eventId = eventId;
+    popupNote.value = loadNote(currentEventId);
     openPopup();
   }
 
-  popupClose.addEventListener("click", closePopup);
-  popupOverlay.addEventListener("click", closePopup);
+  popupClose.addEventListener("click", () => closePopup(false));
+  popupCancel.addEventListener("click", () => closePopup(false));
+  popupOk.addEventListener("click", () => closePopup(true));
+  popupOverlay.addEventListener("click", () => closePopup(false));
 
   fetch("data/events.json")
     .then(response => response.json())
