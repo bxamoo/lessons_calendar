@@ -58,17 +58,41 @@ h1 {
 }
 
 #calendar .fc-event,
-#calendar .fc-daygrid-event {
+#calendar .fc-daygrid-event,
+#calendar .fc-daygrid-event-harness {
   cursor: pointer;
   min-height: 2.7rem !important;
   padding: 0.45rem 0.55rem !important;
 }
 
+#calendar .fc-daygrid-event {
+  display: flex !important;
+  align-items: center !important;
+}
+
+#calendar .fc-daygrid-event .fc-event-main {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
 #calendar .fc-daygrid-event .event-title {
-  display: block;
+  display: inline-flex;
+  align-items: center;
   white-space: normal;
   line-height: 1.4;
   max-width: 100%;
+}
+
+#calendar .fc-toolbar .fc-button,
+#calendar .fc .fc-button {
+  font-size: 1.3rem !important;
+  min-height: 52px !important;
+  padding: 1rem 1.25rem !important;
+}
+
+#calendar .fc-toolbar .fc-button-primary {
+  min-height: 54px !important;
 }
 
 @media (max-width: 768px) {
@@ -299,6 +323,17 @@ h1 {
 #calendar .fc-toolbar .fc-col-header-cell.fc-day-sun,
 #calendar .fc-toolbar .fc-col-header-cell.fc-day-holiday {
   color: #dc2626;
+}
+
+#calendar .fc-toolbar .fc-button,
+#calendar .fc-button {
+  font-size: 1.28rem !important;
+  min-height: 50px !important;
+  padding: 1rem 1.25rem !important;
+}
+
+#calendar .fc-toolbar .fc-button-primary {
+  min-height: 52px !important;
 }
 
 /* カテゴリ別の色分け */

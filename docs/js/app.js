@@ -130,6 +130,12 @@ document.addEventListener("DOMContentLoaded", function () {
         firstDay: 0,
         dayMaxEventRows: false,
         events: calendarEvents,
+        dayCellDidMount(info) {
+          const numberEl = info.el.querySelector(".fc-daygrid-day-number");
+          if (numberEl) {
+            numberEl.textContent = String(info.date.getDate());
+          }
+        },
         eventContent(info) {
           const dot = document.createElement("span");
           dot.className = "event-dot";
