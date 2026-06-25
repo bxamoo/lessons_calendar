@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const popupTitle = document.getElementById("popupTitle");
   const popupDate = document.getElementById("popupDate");
   const popupTime = document.getElementById("popupTime");
-  const popupNote = document.getElementById("popupNote");
   const popupClose = document.querySelector(".popup-close");
   const popupOverlay = document.querySelector(".popup-overlay");
   const popupOk = document.querySelector(".popup-ok");
@@ -63,24 +62,9 @@ document.addEventListener("DOMContentLoaded", function () {
     popup.setAttribute("aria-hidden", "false");
   }
 
-  function closePopup(save = false) {
-    if (save && currentEventId) {
-      saveNote(currentEventId, popupNote.value);
-    }
+  function closePopup() {
     popup.classList.add("hidden");
     popup.setAttribute("aria-hidden", "true");
-  }
-
-  function getStorageKey(eventId) {
-    return `lessons-calendar-note:${eventId}`;
-  }
-
-  function loadNote(eventId) {
-    return localStorage.getItem(getStorageKey(eventId)) || "";
-  }
-
-  function saveNote(eventId, note) {
-    localStorage.setItem(getStorageKey(eventId), note);
   }
 
   function showEventPopup(info) {
@@ -94,13 +78,11 @@ document.addEventListener("DOMContentLoaded", function () {
     popupTitle.textContent = info.event.title;
     popupDate.textContent = `日付: ${dateText}`;
     popupTime.textContent = `時間: ${timeText}`;
-    popupNote.value = loadNote(currentEventId);
     openPopup();
-  }
 
-  popupClose.addEventListener("click", () => closePopup(false));
-  popupCancel.addEventListener("click", () => closePopup(false));
-  popupOk.addEventListener("click", () => closePopup(true));
+  popupClose.addEventListener("click", () => closePopup());
+  popupCancel.addEventListener("click", () => closePopup());
+  popupOk.addEventListener("click", () => closePopup());
   popupOverlay.addEventListener("click", () => closePopup(false));
 
   fetch("data/events.json")

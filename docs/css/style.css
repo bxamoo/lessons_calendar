@@ -128,11 +128,6 @@ h1 {
     padding: 18px;
   }
 
-  .popup-note {
-    min-height: 110px;
-    font-size: 1rem;
-  }
-
   .popup-actions {
     gap: 0.75rem;
   }
@@ -154,25 +149,25 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px;
+  padding: 12px;
 }
 
 .popup-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .popup-content {
   position: relative;
   background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
-  padding: 22px;
-  width: min(100%, 96vw);
-  max-width: 980px;
-  min-height: 84vh;
-  max-height: 94vh;
+  border-radius: 16px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18);
+  padding: 18px;
+  width: min(95vw, 520px);
+  max-width: 520px;
+  min-height: auto;
+  max-height: 80vh;
   overflow-y: auto;
 }
 
@@ -188,43 +183,22 @@ h1 {
 }
 
 .popup-field {
-  margin: 0.5rem 0 0;
+  margin: 0.35rem 0 0;
   color: #444;
-}
-
-.popup-label {
-  display: block;
-  margin: 0.75rem 0 0.4rem;
-  font-weight: 600;
-  color: #333;
-}
-
-.popup-note {
-  width: 100%;
-  min-height: 48px;
-  max-height: 90px;
-  max-width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 0.5rem 0.6rem;
-  font-size: 0.9rem;
-  line-height: 1.3;
-  resize: vertical;
-  box-sizing: border-box;
 }
 
 .popup-actions {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.5rem;
   justify-content: flex-end;
-  margin-top: 1rem;
+  margin-top: 0.85rem;
 }
 
 .popup-button {
   border: none;
   border-radius: 8px;
-  padding: 0.75rem 1.1rem;
-  font-size: 0.95rem;
+  padding: 0.65rem 0.95rem;
+  font-size: 0.92rem;
   cursor: pointer;
 }
 
