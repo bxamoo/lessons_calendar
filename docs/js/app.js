@@ -131,16 +131,10 @@ document.addEventListener("DOMContentLoaded", function () {
         dayMaxEventRows: false,
         events: calendarEvents,
         dayCellDidMount(info) {
-          const numberEls = info.el.querySelectorAll(".fc-daygrid-day-number");
-          if (!numberEls.length) return;
-
-          numberEls.forEach((el, index) => {
-            if (index === 0) {
-              el.textContent = String(info.date.getDate());
-            } else {
-              el.remove();
-            }
-          });
+          const topEl = info.el.querySelector(".fc-daygrid-day-top");
+          if (topEl) {
+            topEl.innerHTML = `<span class="fc-daygrid-day-number">${info.date.getDate()}</span>`;
+          }
         },
         eventContent(info) {
           const dot = document.createElement("span");
