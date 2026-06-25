@@ -56,10 +56,10 @@ h1 {
   background: #fff;
   border-radius: 14px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
-  padding: 24px;
-  width: min(100%, 520px);
+  padding: 18px;
+  width: min(100%, 340px);
   max-height: calc(100vh - 40px);
-  overflow-y: auto;
+  overflow-y: visible;
 }
 
 .popup-close {
@@ -87,12 +87,13 @@ h1 {
 
 .popup-note {
   width: 100%;
-  min-height: 160px;
+  min-height: 84px;
+  max-width: 100%;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 0.9rem 0.95rem;
+  padding: 0.7rem 0.8rem;
   font-size: 0.95rem;
-  line-height: 1.5;
+  line-height: 1.4;
   resize: vertical;
 }
 
@@ -125,6 +126,37 @@ h1 {
   outline: none;
   border-color: #7daae8;
   box-shadow: 0 0 0 3px rgba(125, 170, 232, 0.18);
+}
+
+.event-dot {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  margin-right: 0.45rem;
+  vertical-align: middle;
+}
+
+.event-dot.category-karate {
+  background-color: #3b82f6;
+}
+
+.event-dot.category-neis {
+  background-color: #22c55e;
+}
+
+.event-dot.category-dance {
+  background-color: #ef4444;
+}
+
+.event-dot.category-other {
+  background-color: #9ca3af;
+}
+
+.event-title {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1.3;
 }
 
 /* カテゴリ別の色分け */

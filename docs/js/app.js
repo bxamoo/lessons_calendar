@@ -149,6 +149,17 @@ document.addEventListener("DOMContentLoaded", function () {
         firstDay: 0,
         dayMaxEventRows: false,
         events: calendarEvents,
+        eventContent(info) {
+          const dot = document.createElement("span");
+          dot.className = "event-dot";
+          info.event.classNames.forEach(name => dot.classList.add(name));
+
+          const title = document.createElement("span");
+          title.className = "event-title";
+          title.textContent = info.event.title;
+
+          return { domNodes: [dot, title] };
+        },
         eventClick(info) {
           info.jsEvent.preventDefault();
           showEventPopup(info);
