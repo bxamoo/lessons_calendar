@@ -41,12 +41,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function formatPopupDate(date) {
     if (!date) return "";
-    return new Intl.DateTimeFormat("ja-JP", {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric",
-      weekday: "short"
-    }).format(date);
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const weekday = new Intl.DateTimeFormat("ja-JP", { weekday: "short" }).format(date);
+    return `${month}/${day} (${weekday})`;
   }
 
   function formatTime(date) {

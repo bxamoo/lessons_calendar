@@ -95,8 +95,19 @@ h1 {
   }
 
   #calendar .fc-toolbar-title,
+  #calendar .fc-toolbar button,
+  #calendar .fc-button {
+    font-size: 1.15rem;
+  }
+
+  #calendar .fc-toolbar button,
+  #calendar .fc-button {
+    padding: 0.95rem 1.1rem;
+  }
+
+  #calendar .fc-toolbar .fc-button-primary,
   #calendar .fc-toolbar button {
-    font-size: 1rem;
+    min-height: 42px;
   }
 
   #calendar .fc-daygrid-day-frame {
@@ -261,16 +272,33 @@ h1 {
 }
 
 #calendar .fc-daygrid-event .fc-event-main {
+  display: flex;
+  align-items: center;
   overflow: hidden;
   width: 100%;
 }
 
 #calendar .fc-daygrid-event .event-title {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: calc(100% - 0.9rem);
+  line-height: 1.2;
+}
+
+#calendar .fc-daygrid-day.fc-day-sat .fc-daygrid-day-number,
+#calendar .fc-toolbar .fc-col-header-cell.fc-day-sat {
+  color: #2563eb;
+}
+
+#calendar .fc-daygrid-day.fc-day-sun .fc-daygrid-day-number,
+#calendar .fc-daygrid-day.fc-day-holiday .fc-daygrid-day-number,
+#calendar .fc-toolbar .fc-col-header-cell.fc-day-sun,
+#calendar .fc-toolbar .fc-col-header-cell.fc-day-holiday {
+  color: #dc2626;
 }
 
 /* カテゴリ別の色分け */
