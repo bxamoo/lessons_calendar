@@ -130,13 +130,13 @@ document.addEventListener("DOMContentLoaded", function () {
         firstDay: 0,
         dayMaxEventRows: false,
         events: calendarEvents,
-        dayCellDidMount(info) {
-          const numberEl = info.el.querySelector(".fc-daygrid-day-number");
-          if (numberEl) {
-            numberEl.textContent = String(info.date.getDate());
-          }
+        dayCellContent(info) {
+          return { html: String(info.date.getDate()) };
         },
         eventContent(info) {
+          const container = document.createElement("div");
+          container.className = "event-content-wrapper";
+
           const dot = document.createElement("span");
           dot.className = "event-dot";
           info.event.classNames.forEach(name => dot.classList.add(name));
@@ -145,7 +145,17 @@ document.addEventListener("DOMContentLoaded", function () {
           title.className = "event-title";
           title.textContent = info.event.title;
 
-          return { domNodes: [dot, title] };
+          container.appendChild(dot);
+          container.appendChild(title);
+
+          if (!info.event.allDay && info.event.start) {
+            const timeLabel = document.createElement("span");
+            timeLabel.className = "event-time";
+            timeLabel.textContent = `${formatTime(info.event.start)} - ${formatTime(info.event.end)}`;
+            container.appendChild(timeLabel);
+          }
+
+          return { domNodes: [container] };
         },
         eventClick(info) {
           info.jsEvent.preventDefault();
