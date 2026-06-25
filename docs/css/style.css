@@ -27,6 +27,71 @@ h1 {
   overflow: visible;
 }
 
+#calendar .fc-event {
+  cursor: pointer;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.popup {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.popup-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.popup-content {
+  position: relative;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+  padding: 24px;
+  width: min(100%, 420px);
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+}
+
+.popup-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  border: none;
+  background: transparent;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #555;
+}
+
+.popup-field {
+  margin: 0.5rem 0 0;
+  color: #444;
+}
+
+.popup-details {
+  margin-top: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.popup-details dt {
+  font-weight: 700;
+}
+
+.popup-details dd {
+  margin: 0 0 0.75rem 0;
+}
+
 /* カテゴリ別の色分け */
 #calendar .fc-event.category-karate {
   background-color: #cbe6ff !important;

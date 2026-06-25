@@ -11,6 +11,17 @@
   <h1>習い事カレンダー</h1>
   <div id="calendar"></div>
 
+  <div id="event-popup" class="popup hidden" aria-hidden="true">
+    <div class="popup-overlay" tabindex="-1"></div>
+    <div class="popup-content" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+      <button type="button" class="popup-close" aria-label="閉じる">×</button>
+      <h2 id="popupTitle"></h2>
+      <p id="popupDate" class="popup-field"></p>
+      <p id="popupTime" class="popup-field"></p>
+      <div id="popupDetails" class="popup-details"></div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
   <script src="js/app.js"></script>
 
