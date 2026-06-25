@@ -47,13 +47,13 @@ h1 {
 
 /* ５週間分が見やすくなるように、各日の縦幅を広めに確保 */
 #calendar .fc-daygrid-day-frame {
-  min-height: 13rem;
-  max-height: 13rem;
+  min-height: 15rem;
+  max-height: 15rem;
 }
 
 #calendar .fc-daygrid-day-events {
-  min-height: 11.2rem;
-  max-height: 11.2rem;
+  min-height: 14rem;
+  max-height: 14rem;
   overflow: hidden;
 }
 
@@ -61,8 +61,8 @@ h1 {
 #calendar .fc-daygrid-event,
 #calendar .fc-daygrid-event-harness {
   cursor: pointer;
-  min-height: 1.95rem !important;
-  padding: 0.2rem 0.4rem !important;
+  min-height: 1.75rem !important;
+  padding: 0.18rem 0.4rem !important;
 }
 
 #calendar .fc-daygrid-event {
@@ -262,13 +262,16 @@ h1 {
   box-shadow: 0 0 0 3px rgba(125, 170, 232, 0.18);
 }
 
-.event-dot {
+.event-text {
   display: inline-block;
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 50%;
-  margin-right: 0.45rem;
-  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.88rem;
+}
+
+.event-dot {
+  display: none;
 }
 
 .event-dot.category-karate {

@@ -137,28 +137,15 @@ document.addEventListener("DOMContentLoaded", function () {
           const container = document.createElement("div");
           container.className = "event-content-wrapper";
 
-          const dot = document.createElement("span");
-          dot.className = "event-dot";
-          info.event.classNames.forEach(name => dot.classList.add(name));
-
-          const timeLabel = document.createElement("span");
-          timeLabel.className = "event-time";
+          const text = document.createElement("span");
+          text.className = "event-text";
           if (!info.event.allDay && info.event.start) {
-            timeLabel.textContent = `${formatTime(info.event.start)}-${formatTime(info.event.end)}`;
+            text.textContent = `${formatTime(info.event.start)}-${formatTime(info.event.end)} ${info.event.title}`;
           } else {
-            timeLabel.textContent = "";
+            text.textContent = info.event.title;
           }
 
-          const title = document.createElement("span");
-          title.className = "event-title";
-          title.textContent = info.event.title;
-
-          container.appendChild(dot);
-          if (timeLabel.textContent) {
-            container.appendChild(timeLabel);
-          }
-          container.appendChild(title);
-
+          container.appendChild(text);
           return { domNodes: [container] };
         },
         eventClick(info) {
