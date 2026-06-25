@@ -33,42 +33,55 @@ h1 {
 
 @media (max-width: 768px) {
   body {
-    margin: 10px;
+    margin: 0;
     background: #f5f7fb;
   }
 
   #calendar {
+    width: 100%;
     max-width: 100%;
-    margin: 0 auto;
-    padding: 8px;
+    margin: 0;
+    padding: 6px 6px 12px;
+    border-radius: 0;
+  }
+
+  #calendar .fc-toolbar {
+    padding: 0.5rem 0;
+  }
+
+  #calendar .fc-toolbar-title,
+  #calendar .fc-toolbar button {
+    font-size: 1rem;
   }
 
   #calendar .fc-daygrid-day-frame {
-    min-height: calc(8 * 2rem + 2rem);
+    min-height: calc(8 * 2.5rem + 2rem);
   }
 
   #calendar .fc-daygrid-day-events {
-    min-height: calc(8 * 2rem);
+    min-height: calc(8 * 2.5rem);
   }
 
   #calendar .fc-daygrid-event {
-    font-size: 1rem !important;
-    line-height: 1.6 !important;
-    padding: 0.35rem 0.4rem !important;
+    font-size: 1.05rem !important;
+    line-height: 1.8 !important;
+    padding: 0.45rem 0.5rem !important;
+    margin-bottom: 0.25rem;
   }
 
   #calendar .fc-daygrid-event .event-title {
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 1.05rem;
+    line-height: 1.6;
   }
 
   .popup-content {
-    width: min(100%, 92vw);
+    width: min(100%, 96vw);
+    max-width: 96vw;
     padding: 18px;
   }
 
   .popup-note {
-    min-height: 100px;
+    min-height: 110px;
     font-size: 1rem;
   }
 
