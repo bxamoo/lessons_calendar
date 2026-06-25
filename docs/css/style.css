@@ -323,10 +323,10 @@ h1 {
 }
 
 .event-content-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
+  display: inline-flex;
   align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
 }
 
 .event-time {

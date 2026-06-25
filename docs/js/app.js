@@ -141,19 +141,23 @@ document.addEventListener("DOMContentLoaded", function () {
           dot.className = "event-dot";
           info.event.classNames.forEach(name => dot.classList.add(name));
 
+          const timeLabel = document.createElement("span");
+          timeLabel.className = "event-time";
+          if (!info.event.allDay && info.event.start) {
+            timeLabel.textContent = `${formatTime(info.event.start)}-${formatTime(info.event.end)}`;
+          } else {
+            timeLabel.textContent = "";
+          }
+
           const title = document.createElement("span");
           title.className = "event-title";
           title.textContent = info.event.title;
 
           container.appendChild(dot);
-          container.appendChild(title);
-
-          if (!info.event.allDay && info.event.start) {
-            const timeLabel = document.createElement("span");
-            timeLabel.className = "event-time";
-            timeLabel.textContent = `${formatTime(info.event.start)} - ${formatTime(info.event.end)}`;
+          if (timeLabel.textContent) {
             container.appendChild(timeLabel);
           }
+          container.appendChild(title);
 
           return { domNodes: [container] };
         },
