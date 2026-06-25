@@ -330,10 +330,6 @@ h1 {
   color: #dc2626;
 }
 
-#calendar .fc-daygrid-day-top .fc-daygrid-day-number:not(:first-child) {
-  display: none;
-}
-
 #calendar .fc-toolbar .fc-button,
 #calendar .fc-button {
   font-size: 1.28rem !important;

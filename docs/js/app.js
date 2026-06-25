@@ -131,9 +131,9 @@ document.addEventListener("DOMContentLoaded", function () {
         dayMaxEventRows: false,
         events: calendarEvents,
         dayCellDidMount(info) {
-          const topEl = info.el.querySelector(".fc-daygrid-day-top");
-          if (topEl) {
-            topEl.innerHTML = `<span class="fc-daygrid-day-number">${info.date.getDate()}</span>`;
+          const numberEl = info.el.querySelector(".fc-daygrid-day-number");
+          if (numberEl) {
+            numberEl.textContent = String(info.date.getDate());
           }
         },
         eventContent(info) {
