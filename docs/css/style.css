@@ -10,25 +10,37 @@ h1 {
 }
 
 #calendar {
-  max-width: 900px;
+  width: min(1200px, 100%);
+  max-width: 1200px;
+  min-height: 840px;
   margin: 0 auto;
   background: white;
-  padding: 10px;
-  border-radius: 8px;
+  padding: 16px;
+  border-radius: 12px;
 }
 
-/* ６行分の縦幅を確保し、予定が多いときは縦幅を伸ばして表示 */
+/* ５週間分が見やすくなるように、各日の縦幅を広めに確保 */
 #calendar .fc-daygrid-day-frame {
-  min-height: calc(6 * 1.85rem + 1.5rem);
+  min-height: 10.5rem;
 }
 
 #calendar .fc-daygrid-day-events {
-  min-height: calc(6 * 1.85rem);
+  min-height: 10rem;
   overflow: visible;
 }
 
-#calendar .fc-event {
+#calendar .fc-event,
+#calendar .fc-daygrid-event {
   cursor: pointer;
+  min-height: 2.7rem !important;
+  padding: 0.45rem 0.55rem !important;
+}
+
+#calendar .fc-daygrid-event .event-title {
+  display: block;
+  white-space: normal;
+  line-height: 1.4;
+  max-width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -118,18 +130,20 @@ h1 {
 .popup-content {
   position: relative;
   background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
-  padding: 14px;
-  width: min(100%, 300px);
-  max-height: calc(100vh - 40px);
-  overflow-y: visible;
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+  padding: 22px;
+  width: min(100%, 96vw);
+  max-width: 980px;
+  min-height: 84vh;
+  max-height: 94vh;
+  overflow-y: auto;
 }
 
 .popup-close {
   position: absolute;
-  top: 12px;
-  right: 14px;
+  top: 16px;
+  right: 18px;
   border: none;
   background: transparent;
   font-size: 1.4rem;
