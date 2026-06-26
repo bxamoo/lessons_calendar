@@ -231,30 +231,6 @@ h1 {
   color: #444;
 }
 
-.popup-actions {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: flex-end;
-  margin-top: 0.85rem;
-}
-
-.popup-button {
-  border: none;
-  border-radius: 8px;
-  padding: 0.65rem 0.95rem;
-  font-size: 0.92rem;
-  cursor: pointer;
-}
-
-.popup-ok {
-  background: #3b82f6;
-  color: #fff;
-}
-
-.popup-cancel {
-  background: #e5e7eb;
-  color: #111;
-}
 
 .popup-note:focus {
   outline: none;

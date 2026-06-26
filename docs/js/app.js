@@ -6,8 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const popupTime = document.getElementById("popupTime");
   const popupClose = document.querySelector(".popup-close");
   const popupOverlay = document.querySelector(".popup-overlay");
-  const popupOk = document.querySelector(".popup-ok");
-  const popupCancel = document.querySelector(".popup-cancel");
   let currentEventId = "";
 
   function normalizeTime(timeString) {
@@ -80,8 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   popupClose.addEventListener("click", () => closePopup());
-  popupCancel.addEventListener("click", () => closePopup());
-  popupOk.addEventListener("click", () => closePopup());
   popupOverlay.addEventListener("click", () => closePopup());
 
   fetch("data/events.json")
